@@ -48,64 +48,6 @@
             display: inline-block; /* Ensure transform applies correctly to each text segment */
         }
 
-        /* Homepage Two-Section Background Styles */
-        .hero-background-section {
-            background-size: cover;
-            background-position: center;
-            height: 100%; /* Take full height of the header */
-            position: relative; /* For overlay */
-        }
-
-        .hero-background-section::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay for text readability */
-        }
-
-        /* Specific background images for each section */
-        .hero-bg-left {
-            background-image: url('images/Art_1.jpg'); /* Replace with your first image */
-        }
-
-        .hero-bg-right {
-            background-image: url('https://placehold.co/960x1080/9F7AEA/FFFFFF?text=Image+Right'); /* Replace with your second image */
-        }
-
-        /* Ensure content is on top of the background sections */
-        .hero-content {
-            position: absolute; /* Position content over the background sections */
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2; /* Higher z-index than background sections */
-            width: 100%; /* Take full width for centering */
-            max-width: 90%; /* Constrain width on smaller screens */
-        }
-
-        /* Responsive adjustments for hero background sections */
-        @media (max-width: 767px) { /* For mobile phones */
-            .hero-background-section {
-                width: 100% !important; /* Each section takes full width */
-                height: 50vh; /* Give each section half the viewport height */
-            }
-            .hero-content {
-                top: 0; /* Reset top for mobile */
-                transform: translateX(-50%); /* Only horizontal centering */
-                height: 100%; /* Take full height to center content vertically */
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                padding-top: 4rem; /* Adjust for fixed nav bar */
-                padding-bottom: 4rem;
-            }
-            .hero-content img {
-                margin-top: 0; /* Reset margin */
-            }
-        }
-
         /* Go to Top Button Styles */
         #go-to-top-btn {
             display: none; /* Hidden by default */
@@ -118,9 +60,13 @@
             background-color: #4F46E5; /* Indigo-600 */
             color: white; /* White text */
             cursor: pointer; /* Add a mouse pointer on hover */
-            padding: 15px; /* Some padding */
-            border-radius: 50%; /* Rounded shape */
-            font-size: 18px; /* Increase font size */
+            width: 50px; /* Set a fixed width for square shape */
+            height: 50px; /* Set a fixed height for square shape */
+            border-radius: 10px; /* Curved edges */
+            font-size: 24px; /* Increase font size for better visibility */
+            display: flex; /* Use flexbox to center content */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
             transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
         }
@@ -146,14 +92,9 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative flex flex-col md:flex-row min-h-screen">
-        <!-- Left Background Section -->
-        <div class="w-full md:w-1/2 hero-background-section hero-bg-left"></div>
-        <!-- Right Background Section -->
-        <div class="w-full md:w-1/2 hero-background-section hero-bg-right"></div>
-
-        <!-- Original Hero Content (Text and Profile Photo) -->
-        <div class="container mx-auto text-center px-4 hero-content">
+    <header class="relative bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-32 flex items-center justify-center min-h-screen">
+        <!-- Original Hero Content -->
+        <div class="container mx-auto text-center px-4">
             <img src="https://placehold.co/150x150/667EEA/FFFFFF?text=Your+Photo" alt="Your Photo" class="rounded-full mx-auto mb-6 border-4 border-white shadow-lg">
             <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">Hello, I'm <span class="text-yellow-300">Shruti</span>!</h1>
             <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
@@ -235,7 +176,7 @@
                     <!-- Artwork Item 1 -->
                     <div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300"
                          data-title="Abstract Dream" data-description="A vibrant exploration of color and form, perfect for modern spaces.">
-                        <img src="images/Art_1.jpg" alt="Artwork 1" class="w-full h-48 object-cover">
+                        <img src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Artwork+1" alt="Artwork 1" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h4 class="text-xl font-semibold text-gray-900 mb-2">Abstract Dream</h4>
                             <p class="text-gray-600 text-sm">Acrylic on canvas, 24x36 inches</p>
@@ -287,7 +228,7 @@
                     <!-- Artwork Item 5 -->
                     <div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300"
                          data-title="Vibrant Abstract" data-description="A dynamic and colorful abstract piece, perfect for adding energy to any room.">
-                        <img src="images/Art_1.jpg" alt="Artwork 5" class="w-full h-48 object-cover">
+                        <img src="https://placehold.co/400x300/F0E7FF/FFFFFF?text=Artwork+5" alt="Artwork 5" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h4 class="text-xl font-semibold text-gray-900 mb-2">Vibrant Abstract</h4>
                             <p class="text-gray-600 text-sm">Mixed Media, 20x20 inches</p>
@@ -569,7 +510,7 @@
 
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                goToTopBtn.style.display = "block";
+                goToTopBtn.style.display = "flex"; /* Changed to flex to align content */
             } else {
                 goToTopBtn.style.display = "none";
             }
