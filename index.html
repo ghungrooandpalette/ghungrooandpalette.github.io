@@ -199,8 +199,9 @@
                     These are some of my ready-to-order pieces. If any of these catch your eye, feel free to connect with me!
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    <!-- Artwork Item 1 -->
-                    <div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 scrollable-artwork-item"
+                   
+                   <!-- Artwork Item 1 -->
+<div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 scrollable-artwork-item"
      data-title="Pet Portrait Commission" data-description="A custom portrait capturing the beloved personality of a pet.">
 
     <!-- Image Carousel Section -->
@@ -220,8 +221,14 @@
         <h4 class="text-xl font-semibold text-gray-900 mb-2">Pet Portrait Commission</h4>
         <p class="text-gray-600 text-sm">Watercolor on paper, 10x12 inches</p>
         <p class="text-gray-700 mt-4 artwork-current-description">A custom portrait capturing the beloved personality of a pet.</p>
-        <button class="generate-description-btn mt-4 w-full bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-600 transition-colors duration-200">
-            Generate Description ✨
+        
+        <!-- Inquiry Button with Custom Price -->
+        <button 
+            class="inquire-btn mt-4 w-full bg-pink-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-pink-700 transition-colors duration-200"
+            data-title="Pet Portrait Commission"
+            data-price="Rs. 499/-"
+            onclick="inquire(this)">
+            Rs. 499/- Click to inquire
         </button>
     </div>
 </div>
