@@ -348,6 +348,19 @@
         });
         artworkCurrent = index - 1;
     }
+    // Optional: Auto-scroll on hover
+    const artworkContainer = document.querySelector('.image-carousel');
+    let artworkInterval;
+    artworkContainer.addEventListener('mouseenter', () => {
+        artworkInterval = setInterval(() => {
+            artworkCurrent = (artworkCurrent + 1) % artworkSlides.length;
+            showArtworkSlide(artworkCurrent + 1);
+        }, 2000);
+    });
+    artworkContainer.addEventListener('mouseleave', () => clearInterval(artworkInterval));
+
+    // Init first slide
+    showArtworkSlide(1);
 </script>
 </div>
                     <!-- Personalized Artwork Item 2 -->
