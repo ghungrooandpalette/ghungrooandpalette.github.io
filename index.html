@@ -226,20 +226,31 @@
     </div>
 </div>
                     <!-- Artwork Item 2 -->
-                    <div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300"
-                         data-title="Serene Landscape" data-description="Capturing the tranquility of nature with soft brushstrokes.">
-                        <div class="relative w-full pb-[100%] overflow-hidden"> <!-- Aspect Ratio Box (Square) -->
-                            <img src="https://placehold.co/2560x2560/C4B5FD/FFFFFF?text=Artwork+2" alt="Artwork 2" class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="p-6">
-                            <h4 class="text-xl font-semibold text-gray-900 mb-2">Serene Landscape</h4>
-                            <p class="text-gray-600 text-sm">Oil painting, 18x24 inches</p>
-                            <p class="text-gray-700 mt-4 artwork-current-description">Capturing the tranquility of nature with soft brushstrokes.</p>
-                            <button class="generate-description-btn mt-4 w-full bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-600 transition-colors duration-200">
-                                Generate Description ✨
-                            </button>
-                        </div>
-                    </div>
+                    <div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 scrollable-artwork-item"
+     data-title="Pet Portrait Commission" data-description="A custom portrait capturing the beloved personality of a pet.">
+
+    <!-- Image Carousel Section -->
+    <div class="relative w-full aspect-[1/1] overflow-hidden" data-carousel-id="6">
+        <div class="image-carousel relative w-full h-full">
+            <img src="portfolio/Art_19.jpg" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100" />
+            <img src="portfolio/Art_18.jpg" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0" />
+        </div>
+        <div class="carousel-dots absolute bottom-2 left-0 right-0 flex justify-center space-x-2 z-10">
+            <div class="dot w-3 h-3 bg-white bg-opacity-85 rounded-full cursor-pointer" data-carousel-id="6" data-slide="0"></div>
+            <div class="dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-carousel-id="6" data-slide="1"></div>
+        </div>
+    </div>
+
+    <!-- Description -->
+    <div class="p-6">
+        <h4 class="text-xl font-semibold text-gray-900 mb-2">Pet Portrait Commission</h4>
+        <p class="text-gray-600 text-sm">Watercolor on paper, 10x12 inches</p>
+        <p class="text-gray-700 mt-4 artwork-current-description">A custom portrait capturing the beloved personality of a pet.</p>
+        <button class="generate-description-btn mt-4 w-full bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-600 transition-colors duration-200">
+            Generate Description ✨
+        </button>
+    </div>
+</div>
                     <!-- Artwork Item 3 -->
                     <div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300"
                          data-title="Digital Portrait" data-description="A detailed and expressive digital rendering of a person.">
