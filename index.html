@@ -952,5 +952,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
+    <script>
+  function inquire(button) {
+    const title = button.getAttribute('data-title');
+    const price = button.getAttribute('data-price');
+    const messageBox = document.querySelector('#message');
+
+    const prefillMessage = `Hello, I came across your portfolio and would like to get in touch with you for the artwork: "${title}" priced at ${price}.\nThank you!`;
+
+    if (messageBox) {
+      messageBox.value = prefillMessage;
+    }
+
+    const contactSection = document.querySelector('#contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
 </body>
 </html>
