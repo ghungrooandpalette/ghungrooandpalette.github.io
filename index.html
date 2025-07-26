@@ -354,20 +354,31 @@
 </div>
 
                     <!-- Personalized Artwork Item 3 -->
-                    <div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300"
-                         data-title="Family Illustration" data-description="A charming illustration created as a gift for a family anniversary.">
-                        <div class="relative w-full pb-[100%] overflow-hidden"> <!-- Aspect Ratio Box (Square) -->
-                            <img src="https://placehold.co/2560x2560/E8D6FF/FFFFFF?text=Custom+3" alt="Custom Artwork 3" class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="p-6">
-                            <h4 class="text-xl font-semibold text-gray-900 mb-2">Family Illustration</h4>
-                            <p class="text-gray-600 text-sm">Ink and digital color, 8x10 inches</p>
-                            <p class="text-gray-700 mt-4 artwork-current-description">A charming illustration created as a gift for a family anniversary.</p>
-                            <button class="generate-description-btn mt-4 w-full bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-600 transition-colors duration-200">
-                                Generate Description ✨
-                            </button>
-                        </div>
-                    </div>
+                    <div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 scrollable-artwork-item"
+     data-title="Custom Mural Design" data-description="Designed for a client’s living room, reflecting their favorite travel destinations.">
+
+    <!-- Image Carousel Section -->
+    <div class="relative w-full h-64 overflow-hidden carousel" data-carousel-id="2">
+        <div class="image-carousel relative w-full h-full">
+            <img src="portfolio/Art_8.jpg" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100" />
+            <img src="portfolio/Art_9.jpg" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0" />
+        </div>
+        <div class="carousel-dots absolute bottom-2 left-0 right-0 flex justify-center space-x-2 z-10">
+            <div class="dot w-3 h-3 bg-white bg-opacity-85 rounded-full cursor-pointer" data-carousel-id="3" data-slide="0"></div>
+            <div class="dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-carousel-id="3" data-slide="1"></div>
+        </div>
+    </div>
+
+    <!-- Description -->
+    <div class="p-6">
+        <h4 class="text-xl font-semibold text-gray-900 mb-2">Custom Mural Design</h4>
+        <p class="text-gray-600 text-sm">Digital concept for wall mural</p>
+        <p class="text-gray-700 mt-4 artwork-current-description">Designed for a client's living room, reflecting their favorite travel destinations.</p>
+        <button class="generate-description-btn mt-4 w-full bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-600 transition-colors duration-200">
+            Generate Description ✨
+        </button>
+    </div>
+</div>
                     <!-- Personalized Artwork Item 4 -->
                     <div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300"
                          data-title="Abstract Commission" data-description="Commissioned by a client seeking a large-scale abstract piece for their office.">
