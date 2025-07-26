@@ -331,6 +331,34 @@
             Generate Description ✨
         </button>
     </div>
+                        <!-- Auto Carousel Script -->
+<script>
+    const images = [
+        document.getElementById('carousel-img-1'),
+        document.getElementById('carousel-img-2')
+    ];
+
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    let currentIndex = 0;
+
+    function switchImage() {
+        // Hide current
+        images[currentIndex].style.opacity = '0';
+        dots[currentIndex].classList.remove('bg-opacity-70');
+        dots[currentIndex].classList.add('bg-opacity-30');
+
+        // Move to next
+        currentIndex = (currentIndex + 1) % images.length;
+
+        // Show next
+        images[currentIndex].style.opacity = '1';
+        dots[currentIndex].classList.remove('bg-opacity-30');
+        dots[currentIndex].classList.add('bg-opacity-70');
+    }
+
+    // Start the auto-carousel
+    setInterval(switchImage, 3000); // Change image every 3 seconds
+</script>
 </div>
                     <!-- Personalized Artwork Item 2 -->
                     <div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300"
