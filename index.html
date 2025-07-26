@@ -965,41 +965,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 </script>
-<!-- Lightbox Container -->
-<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
-  <div class="relative">
-    <img id="lightbox-img" class="max-h-[80vh] max-w-[90vw] rounded-xl shadow-2xl" />
-    <button id="lightbox-close" class="absolute top-2 right-2 text-white text-3xl font-bold hover:text-gray-300">&times;</button>
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center hidden">
+  <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl font-bold z-50">&times;</button>
+  <div class="relative max-w-4xl w-full px-4">
+    <img id="lightbox-img" class="w-full max-h-[80vh] object-contain mx-auto transition duration-300" src="" />
+    <div class="absolute top-1/2 left-2 transform -translate-y-1/2 cursor-pointer text-white text-4xl z-50" id="prev">&#10094;</div>
+    <div class="absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer text-white text-4xl z-50" id="next">&#10095;</div>
   </div>
 </div>
 
 <script>
-  // Lightbox functionality
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
-  const lightboxClose = document.getElementById("lightbox-close");
+  const closeBtn = document.getElementById("lightbox-close");
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
 
-  // When any image is clicked
-  document.querySelectorAll(".carousel-image").forEach(img => {
-    img.addEventListener("click", () => {
-      lightboxImg.src = img.src;
-      lightbox.classList.remove("hidden");
-    });
+  const images = Array.from(document.querySelectorAll(".carousel-image"));
+  let currentIndex = 0;
+
+  function openLightboxByIndex(index) {
+    currentIndex = index;
+    lightboxImg.src = images[currentIndex].src;
+    lightbox.classList.remove("hidden");
+  }
+
+  // Attach click to each image
+  images.forEach((img, i) => {
+    img.addEventListener("click", () => openLightboxByIndex(i));
   });
 
-  lightboxClose.addEventListener("click", () => {
-    lightbox.classList.add("hidden");
-    lightboxImg.src = "";
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentIndex].src;
   });
 
-  // Close on outside click
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.add("hidden");
-      lightboxImg.src = "";
-    }
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImg.src = images[currentIndex].src;
   });
-</script>
+
 
 </body>
 </html>
