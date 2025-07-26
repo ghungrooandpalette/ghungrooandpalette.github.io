@@ -677,41 +677,33 @@
             showImage(currentImageIndex);
         }
     </script>
-    <script>
+  <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const carousels = document.querySelectorAll(".carousel");
+    const carousels = document.querySelectorAll(".image-carousel");
 
     carousels.forEach((carousel, index) => {
         const images = carousel.querySelectorAll(".carousel-image");
-        const dots = carousel.querySelectorAll(".dot");
-        let currentIndex = 0;
+        const dots = carousel.parentElement.querySelectorAll(".dot");
 
-        function showSlide(i) {
-            images.forEach((img, idx) => {
-                img.style.opacity = idx === i ? "1" : "0";
-            });
-            dots.forEach((dot, idx) => {
-                dot.classList.toggle("bg-opacity-85", idx === i);
-                dot.classList.toggle("bg-opacity-50", idx !== i);
-            });
-            currentIndex = i;
-        }
-
-        // Auto slide every 3 seconds
-        setInterval(() => {
-            const nextIndex = (currentIndex + 1) % images.length;
-            showSlide(nextIndex);
-        }, 3000);
-
-        // Dots click
-        dots.forEach(dot => {
+        dots.forEach((dot, dotIndex) => {
             dot.addEventListener("click", () => {
-                const targetSlide = parseInt(dot.getAttribute("data-slide"));
-                showSlide(targetSlide);
+                // Hide all images
+                images.forEach((img, imgIdx) => {
+                    img.style.opacity = imgIdx === dotIndex ? "1" : "0";
+                });
+
+                // Update active dot
+                dots.forEach((d, i) => {
+                    d.classList.toggle("bg-opacity-85", i === dotIndex);
+                    d.classList.toggle("bg-opacity-50", i !== dotIndex);
+                });
             });
         });
 
-        showSlide(0); // Initial call
+        // Initially show only the first image
+        images.forEach((img, imgIdx) => {
+            img.style.opacity = imgIdx === 0 ? "1" : "0";
+        });
     });
 });
 </script>
