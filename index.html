@@ -343,8 +343,8 @@
     function showArtworkSlide(index) {
         artworkSlides.forEach((slide, i) => {
             slide.style.opacity = i === index - 1 ? '1' : '0';
-            artworkDots[i].classList.toggle('bg-opacity-70', i === index - 1);
-            artworkDots[i].classList.toggle('bg-opacity-30', i !== index - 1);
+            artworkDots[i].classList.toggle('bg-opacity-100', i === index - 1);
+            artworkDots[i].classList.toggle('bg-opacity-100', i !== index - 1);
         });
         artworkCurrent = index - 1;
     }
