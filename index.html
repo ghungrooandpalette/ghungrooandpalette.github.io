@@ -686,29 +686,39 @@ document.addEventListener("DOMContentLoaded", function () {
         const dots = carousel.parentElement.querySelectorAll(".dot");
         let currentIndex = 0;
 
-        // Show the first image
-        images.forEach((img, i) => {
-            img.style.opacity = i === 0 ? "1" : "0";
-        });
-
-        // Update dot appearance
-        function updateDots(index) {
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.style.opacity = i === index ? "1" : "0";
+            });
             dots.forEach((dot, i) => {
                 dot.classList.toggle("bg-opacity-85", i === index);
                 dot.classList.toggle("bg-opacity-50", i !== index);
             });
         }
-        updateDots(0);
 
-        // Tap/Click to switch image
-        carousel.addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
 
-            images.forEach((img, i) => {
-                img.style.opacity = i === currentIndex ? "1" : "0";
-            });
+        // Swipe detection
+        let startX = 0;
 
-            updateDots(currentIndex);
+        carousel.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        carousel.addEventListener("touchend", (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const diffX = startX - endX;
+
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    // Swiped left
+                    currentIndex = (currentIndex + 1) % images.length;
+                } else {
+                    // Swiped right
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                }
+                showImage(currentIndex);
+            }
         });
     });
 });
