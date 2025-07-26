@@ -1006,6 +1006,17 @@ document.addEventListener("DOMContentLoaded", function () {
     lightboxImg.src = images[currentIndex].src;
   });
 
+  closeBtn.addEventListener("click", () => {
+    lightbox.classList.add("hidden");
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.add("hidden");
+    }
+  });
+</script>
+
 
 </body>
 </html>
