@@ -698,7 +698,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         showImage(currentIndex);
 
-        // Swipe detection
+        // --- Desktop / Tap to scroll ---
+        carousel.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+
+        // --- Mobile / Swipe to scroll ---
         let startX = 0;
 
         carousel.addEventListener("touchstart", (e) => {
@@ -719,6 +725,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 showImage(currentIndex);
             }
+        });
+
+        // Optional: Dots control
+        dots.forEach((dot, index) => {
+            dot.addEventListener("click", (e) => {
+                e.stopPropagation(); // prevent advancing via tap
+                currentIndex = index;
+                showImage(currentIndex);
+            });
         });
     });
 });
