@@ -331,24 +331,6 @@
             Generate Description ✨
         </button>
     </div>
-                        <!-- Carousel Script -->
-<script>
-    const artworkSlides = [
-        document.getElementById('carousel-img-1'),
-        document.getElementById('carousel-img-2')
-    ];
-    const artworkDots = document.querySelectorAll('.carousel-dots .dot');
-    let artworkCurrent = 0;
-
-    function showArtworkSlide(index) {
-        artworkSlides.forEach((slide, i) => {
-            slide.style.opacity = i === index - 1 ? '1' : '0';
-            artworkDots[i].classList.toggle('bg-opacity-100', i === index - 1);
-            artworkDots[i].classList.toggle('bg-opacity-100', i !== index - 1);
-        });
-        artworkCurrent = index - 1;
-    }
-</script>
 </div>
                     <!-- Personalized Artwork Item 2 -->
                     <div class="artwork-item bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300"
