@@ -1015,8 +1015,32 @@ document.addEventListener("DOMContentLoaded", function () {
       lightbox.classList.add("hidden");
     }
   });
-</script>
 
+  // 👉 Mobile Swipe Support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const handleSwipe = () => {
+    if (touchEndX < touchStartX - 50) {
+      // Swipe Left → Next Image
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+    } else if (touchEndX > touchStartX + 50) {
+      // Swipe Right → Previous Image
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+    }
+  };
+
+  lightboxImg.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  lightboxImg.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+</script>
 
 </body>
 </html>
