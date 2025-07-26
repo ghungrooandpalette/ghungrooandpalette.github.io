@@ -304,8 +304,10 @@
                          data-title="Pet Portrait Commission" data-description="A custom portrait capturing the beloved personality of a pet.">
                         <div class="relative w-full pb-[100%] overflow-hidden">
                             <div class="image-carousel relative w-full h-full">
-                                <img src="https://placehold.co/2560x2560/DDAAFF/FFFFFF?text=Custom+1A" alt="Custom Artwork 1A" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100">
-                                <img src="https://placehold.co/2560x2560/AAEEFF/000000?text=Custom+1B" alt="Custom Artwork 1B" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0">
+                                <!-- Sample Image 1 - Distinct Color -->
+                                <img src="https://via.placeholder.com/2560x2560/FF5733/FFFFFF?text=Custom+1A" alt="Custom Artwork 1A" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100">
+                                <!-- Sample Image 2 - Distinct Color -->
+                                <img src="https://via.placeholder.com/2560x2560/3366FF/FFFFFF?text=Custom+1B" alt="Custom Artwork 1B" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0">
                                 <!-- Add more images here if you need more than two for this specific box -->
                             </div>
                             <div class="carousel-dots absolute bottom-2 left-0 right-0 flex justify-center space-x-2 z-10">
@@ -543,7 +545,7 @@
                 button.disabled = false; // Re-enable button
                 button.textContent = 'Generate Description ✨'; // Reset button text
             }
-        }
+            }
 
         // Add event listeners to all "Generate Description" buttons
         document.querySelectorAll('.generate-description-btn').forEach(button => {
@@ -610,9 +612,10 @@
                     if (i === index) {
                         dot.classList.add('bg-opacity-70');
                         dot.classList.remove('bg-opacity-30');
+                        dot.classList.add('bg-indigo-600'); /* Active dot color */
                     } else {
-                        dot.classList.remove('bg-opacity-70');
-                        dot.classList.add('bg-opacity-30');
+                        dot.classList.remove('bg-opacity-70', 'bg-indigo-600');
+                        dot.classList.add('bg-opacity-30'); /* Inactive dot color */
                     }
                 });
             }
