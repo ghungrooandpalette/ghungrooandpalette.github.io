@@ -1107,6 +1107,22 @@ lightboxImg.addEventListener("touchend", (e) => {
     });
   });
 </script>
-    
+    <script>
+    // Hide success message when user clicks on a product or reopens form
+    document.querySelectorAll('.product-container, .form-reopen-button').forEach(item => {
+        item.addEventListener('click', () => {
+            const successMsg = document.getElementById('successMessage');
+            if (successMsg) {
+                successMsg.classList.add('hidden'); // hide it again
+            }
+
+            // Also reset form fields
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.reset();
+            }
+        });
+    });
+</script>
 </body>
 </html>
