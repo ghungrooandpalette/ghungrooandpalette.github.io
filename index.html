@@ -101,18 +101,6 @@
         .carousel-dots .dot {
             transition: background-color 0.3s ease-in-out;
         }
-
-        /* Prevent background scroll when lightbox is active */
-body.no-scroll {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  touch-action: none;
-}
-
-#lightbox-img {
-  touch-action: pinch-zoom; /* Allow pinch zooming on the image */
-}
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -1023,7 +1011,6 @@ document.addEventListener("DOMContentLoaded", function () {
     currentIndex = index;
     lightboxImg.src = images[currentIndex].src;
     lightbox.classList.remove("hidden");
-    document.body.classList.add("no-scroll"); // 👈 Add this line
   }
 
   // Attach click to each image
@@ -1043,13 +1030,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   closeBtn.addEventListener("click", () => {
     lightbox.classList.add("hidden");
-    document.body.classList.remove("no-scroll"); // 👈 Add here
   });
 
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) {
       lightbox.classList.add("hidden");
-        document.body.classList.remove("no-scroll"); // 👈 Add here too
     }
   });
 
