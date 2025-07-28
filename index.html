@@ -101,6 +101,13 @@
         .carousel-dots .dot {
             transition: background-color 0.3s ease-in-out;
         }
+
+        .no-scroll {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  touch-action: none; /* Prevent scroll but allow pinch zoom */
+}
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -1011,6 +1018,9 @@ document.addEventListener("DOMContentLoaded", function () {
     currentIndex = index;
     lightboxImg.src = images[currentIndex].src;
     lightbox.classList.remove("hidden");
+      // Freeze background scroll
+  document.body.style.top = `-${window.scrollY}px`;
+  document.body.classList.add("no-scroll");
   }
 
   // Attach click to each image
@@ -1028,15 +1038,13 @@ document.addEventListener("DOMContentLoaded", function () {
     lightboxImg.src = images[currentIndex].src;
   });
 
-  closeBtn.addEventListener("click", () => {
-    lightbox.classList.add("hidden");
-  });
+  closeBtn.addEventListener("click", closeLightbox);
 
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.add("hidden");
-    }
-  });
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    closeLightbox();
+  }
+});
 
   // 👉 Mobile Swipe Support with Zoom Detection
 let touchStartX = 0;
@@ -1065,6 +1073,16 @@ lightboxImg.addEventListener("touchend", (e) => {
     lightboxImg.src = images[currentIndex].src;
   }
 });
+
+    function closeLightbox() {
+  lightbox.classList.add("hidden");
+
+  // Restore scroll position
+  const scrollY = document.body.style.top;
+  document.body.classList.remove("no-scroll");
+  document.body.style.top = '';
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
+}
 </script>
 <!-- Toggle Script -->
 <script>
