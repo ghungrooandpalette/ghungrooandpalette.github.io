@@ -1004,7 +1004,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevBtn = document.getElementById("prev");
   const nextBtn = document.getElementById("next");
 
-  const images = Array.from(document.querySelectorAll(".carousel-image"));
+  const images = Array.from(document.querySelectorAll(".carousel-image:not(.hidden)"));
   let currentIndex = 0;
 
   function openLightboxByIndex(index) {
