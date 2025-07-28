@@ -694,12 +694,12 @@
         
         <!-- Inquiry Button with Custom Price -->
         <button 
-    class="inquire-btn form-reopen-button mt-4 w-full bg-pink-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-pink-700 transition-colors duration-200"
-    data-title="Pet Portrait Commission"
-    data-price="Rs. 499/-"
-    onclick="inquire(this)">
-    Rs. 499/- Click to inquire
-</button>
+            class="inquire-btn mt-4 w-full bg-pink-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-pink-700 transition-colors duration-200"
+            data-title="Pet Portrait Commission"
+            data-price="Rs. 499/-"
+            onclick="inquire(this)">
+            Rs. 499/- Click to inquire
+        </button>
     </div>
 </div>         
                 </div>
@@ -1107,20 +1107,24 @@ lightboxImg.addEventListener("touchend", (e) => {
     });
   });
 </script>
-    <script>
-    // Hide success message when user clicks on a product or reopens form
-    document.querySelectorAll('.product-container, .form-reopen-button').forEach(item => {
-        item.addEventListener('click', () => {
-            const successMsg = document.getElementById('successMessage');
-            if (successMsg) {
-                successMsg.classList.add('hidden'); // hide it again
-            }
+<script>
+    // Clear the success message if user starts a new interaction
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contactForm");
+        const successMsg = document.getElementById("successMessage");
 
-            // Also reset form fields
-            const form = document.getElementById('contactForm');
-            if (form) {
-                form.reset();
-            }
+        // Hide message on form input interaction
+        form.querySelectorAll("input, textarea").forEach(input => {
+            input.addEventListener("input", () => {
+                if (successMsg) successMsg.style.display = "none";
+            });
+        });
+
+        // Optional: Hide success message when clicking any image/product
+        document.querySelectorAll(".product-image").forEach(image => {
+            image.addEventListener("click", () => {
+                if (successMsg) successMsg.style.display = "none";
+            });
         });
     });
 </script>
