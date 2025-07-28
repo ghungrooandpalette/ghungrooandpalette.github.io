@@ -230,7 +230,7 @@
     <!-- Image Carousel Section -->
     <div class="relative w-full aspect-[1/1] overflow-hidden" data-carousel-id="1">
         <div class="image-carousel relative w-full h-full">
-            <img src="portfolio/Art_10.jpg" class="carousel-image active cursor-zoom-in" onclick="openLightbox(this.src)" />
+            <img src="portfolio/Art_10.jpg" class="carousel-image cursor-zoom-in" onclick="openLightbox(this.src)" />
             <img src="portfolio/Art_11.jpg" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0" />
         </div>
         <div class="carousel-dots absolute bottom-2 left-0 right-0 flex justify-center space-x-2 z-10">
@@ -998,79 +998,70 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 
 <script>
-    const lightbox = document.getElementById("lightbox");
+  const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   const closeBtn = document.getElementById("lightbox-close");
   const prevBtn = document.getElementById("prev");
   const nextBtn = document.getElementById("next");
 
-  // Grab all image elements that are part of any carousel
-  const allImages = Array.from(document.querySelectorAll(".carousel-image.active"));
+  const images = Array.from(document.querySelectorAll(".carousel-image"));
   let currentIndex = 0;
 
-  // Open lightbox using the correct image index
   function openLightboxByIndex(index) {
     currentIndex = index;
-    lightboxImg.src = allImages[currentIndex].src;
+    lightboxImg.src = images[currentIndex].src;
     lightbox.classList.remove("hidden");
   }
 
-  // Attach click event to each image with the correct index
-  allImages.forEach((img, index) => {
-    img.addEventListener("click", () => openLightboxByIndex(index));
+  // Attach click to each image
+  images.forEach((img, i) => {
+    img.addEventListener("click", () => openLightboxByIndex(i));
   });
 
-  // Previous button
   prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
-    lightboxImg.src = allImages[currentIndex].src;
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentIndex].src;
   });
 
-  // Next button
   nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % allImages.length;
-    lightboxImg.src = allImages[currentIndex].src;
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImg.src = images[currentIndex].src;
   });
 
-  // Close button
   closeBtn.addEventListener("click", () => {
     lightbox.classList.add("hidden");
   });
 
-  // Close on background click
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) {
       lightbox.classList.add("hidden");
     }
   });
 
-  // 👉 Mobile Swipe Support with Zoom Detection
-let touchStartX = 0;
-let touchEndX = 0;
-let isZooming = false;
+  // 👉 Mobile Swipe Support
+  let touchStartX = 0;
+  let touchEndX = 0;
 
-lightboxImg.addEventListener("touchstart", (e) => {
-  if (e.touches.length > 1 || lightboxImg.style.transform.includes("scale")) {
-    isZooming = true;
-    return;
-  }
-  isZooming = false;
-  touchStartX = e.touches[0].clientX;
-});
+  const handleSwipe = () => {
+    if (touchEndX < touchStartX - 50) {
+      // Swipe Left → Next Image
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+    } else if (touchEndX > touchStartX + 50) {
+      // Swipe Right → Previous Image
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+    }
+  };
 
-lightboxImg.addEventListener("touchend", (e) => {
-  if (isZooming) return;
-  touchEndX = e.changedTouches[0].clientX;
-  if (touchEndX < touchStartX - 50) {
-    // Swipe Left → Next Image
-    currentIndex = (currentIndex + 1) % images.length;
-    lightboxImg.src = images[currentIndex].src;
-  } else if (touchEndX > touchStartX + 50) {
-    // Swipe Right → Previous Image
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    lightboxImg.src = images[currentIndex].src;
-  }
-});
+  lightboxImg.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  lightboxImg.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
 </script>
 <!-- Toggle Script -->
 <script>
