@@ -711,33 +711,21 @@
     
 <!-- Begin Testimonials Section -->
 <section class="bg-gray-50 py-16">
-  <div class="max-w-3xl mx-auto px-4 text-center">
+  <div class="max-w-7xl mx-auto px-4 text-center">
     <h2 class="text-3xl font-bold text-gray-800 mb-10">What My Clients Say</h2>
 
-    <div class="relative overflow-hidden">
-      <div id="testimonial-track" class="flex transition-transform duration-700 ease-in-out touch-pan-x" style="width: 300%;">
-        <!-- Slide 1 -->
-        <div class="w-full flex-shrink-0 px-4">
-          <blockquote class="text-xl italic text-gray-700 mb-4">"Amazing artwork! Truly captured the emotion I wanted."</blockquote>
-          <p class="font-semibold text-gray-900">— Aditi Sharma</p>
-        </div>
-        <!-- Slide 2 -->
-        <div class="w-full flex-shrink-0 px-4">
-          <blockquote class="text-xl italic text-gray-700 mb-4">"Beautifully customized. Loved the attention to detail."</blockquote>
-          <p class="font-semibold text-gray-900">— Ravi Mehta</p>
-        </div>
-        <!-- Slide 3 -->
-        <div class="w-full flex-shrink-0 px-4">
-          <blockquote class="text-xl italic text-gray-700 mb-4">"Prompt communication and stunning outcome. Highly recommend!"</blockquote>
-          <p class="font-semibold text-gray-900">— Sneha Iyer</p>
-        </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white shadow-lg rounded-xl p-6">
+        <p class="text-gray-600 italic">"Working with you was a wonderful experience. Your art style brought my vision to life!"</p>
+        <div class="mt-4 text-indigo-600 font-semibold">— Aarti Sharma</div>
       </div>
-
-      <!-- Navigation Dots -->
-      <div class="flex justify-center mt-6 space-x-3">
-        <button class="w-3 h-3 rounded-full bg-gray-400" data-index="0"></button>
-        <button class="w-3 h-3 rounded-full bg-gray-300" data-index="1"></button>
-        <button class="w-3 h-3 rounded-full bg-gray-300" data-index="2"></button>
+      <div class="bg-white shadow-lg rounded-xl p-6">
+        <p class="text-gray-600 italic">"Absolutely loved the Kathak illustrations. So expressive and elegant!"</p>
+        <div class="mt-4 text-indigo-600 font-semibold">— Rahul Mehta</div>
+      </div>
+      <div class="bg-white shadow-lg rounded-xl p-6">
+        <p class="text-gray-600 italic">"The attention to detail in your artwork is truly impressive. Highly recommended!"</p>
+        <div class="mt-4 text-indigo-600 font-semibold">— Sneha Kapoor</div>
       </div>
     </div>
   </div>
@@ -1148,67 +1136,6 @@ lightboxImg.addEventListener("touchend", (e) => {
   document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
   });
-</script>
-<script>
-  const track = document.getElementById('testimonial-track');
-  const slides = track.children;
-  const dots = document.querySelectorAll('[data-index]');
-  let currentIndex = 0;
-  let interval;
-
-  function updateCarousel(index) {
-    track.style.transform = `translateX(-${index * 100}%)`;
-    dots.forEach(dot => dot.classList.replace('bg-gray-400', 'bg-gray-300'));
-    dots[index].classList.replace('bg-gray-300', 'bg-gray-400');
-    currentIndex = index;
-  }
-
-  function startAutoSlide() {
-    interval = setInterval(() => {
-      const nextIndex = (currentIndex + 1) % slides.length;
-      updateCarousel(nextIndex);
-    }, 4000);
-  }
-
-  function resetAutoSlide() {
-    clearInterval(interval);
-    startAutoSlide();
-  }
-
-  // Manual Dot Navigation
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const index = parseInt(dot.getAttribute('data-index'));
-      updateCarousel(index);
-      resetAutoSlide();
-    });
-  });
-
-  // Swipe Gesture Support
-  let startX = 0;
-  track.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-  });
-
-  track.addEventListener('touchend', e => {
-    const endX = e.changedTouches[0].clientX;
-    const diff = startX - endX;
-
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        // Swipe Left
-        updateCarousel((currentIndex + 1) % slides.length);
-      } else {
-        // Swipe Right
-        updateCarousel((currentIndex - 1 + slides.length) % slides.length);
-      }
-      resetAutoSlide();
-    }
-  });
-
-  // Initialize
-  updateCarousel(0);
-  startAutoSlide();
 </script>
 </body>
 </html>
