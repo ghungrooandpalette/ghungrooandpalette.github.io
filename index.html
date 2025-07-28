@@ -102,10 +102,17 @@
             transition: background-color 0.3s ease-in-out;
         }
 
-        .no-scroll {
-  overflow: hidden;
-  touch-action: none; /* Prevent scroll but allow pinch zoom */
-}
+         .no-scroll {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    touch-action: none; /* Prevent background scrolling but allow image zoom */
+  }
+
+  #lightbox-img {
+    touch-action: pan-x pan-y; /* Allow zooming and panning on the image */
+  }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
