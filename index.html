@@ -1005,7 +1005,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextBtn = document.getElementById("next");
 
   // Grab all image elements that are part of any carousel
-  const allImages = Array.from(document.querySelectorAll(".carousel-image:not(.opacity-0)"));
+  const allImages = Array.from(document.querySelectorAll(".carousel-image.active"));
   let currentIndex = 0;
 
   // Open lightbox using the correct image index
