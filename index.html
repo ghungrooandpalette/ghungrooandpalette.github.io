@@ -1038,30 +1038,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // 👉 Mobile Swipe Support
-  let touchStartX = 0;
-  let touchEndX = 0;
+  // 👉 Mobile Swipe Support with Zoom Detection
+let touchStartX = 0;
+let touchEndX = 0;
+let isZooming = false;
 
-  const handleSwipe = () => {
-    if (touchEndX < touchStartX - 50) {
-      // Swipe Left → Next Image
-      currentIndex = (currentIndex + 1) % images.length;
-      lightboxImg.src = images[currentIndex].src;
-    } else if (touchEndX > touchStartX + 50) {
-      // Swipe Right → Previous Image
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      lightboxImg.src = images[currentIndex].src;
-    }
-  };
+lightboxImg.addEventListener("touchstart", (e) => {
+  if (e.touches.length > 1 || lightboxImg.style.transform.includes("scale")) {
+    isZooming = true;
+    return;
+  }
+  isZooming = false;
+  touchStartX = e.touches[0].clientX;
+});
 
-  lightboxImg.addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-
-  lightboxImg.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  });
+lightboxImg.addEventListener("touchend", (e) => {
+  if (isZooming) return;
+  touchEndX = e.changedTouches[0].clientX;
+  if (touchEndX < touchStartX - 50) {
+    // Swipe Left → Next Image
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImg.src = images[currentIndex].src;
+  } else if (touchEndX > touchStartX + 50) {
+    // Swipe Right → Previous Image
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentIndex].src;
+  }
+});
 </script>
 <!-- Toggle Script -->
 <script>
