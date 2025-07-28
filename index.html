@@ -740,7 +740,7 @@
     </div>
     <div>
         <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Email</label>
-        <input type="email" id="email" name="email" placeholder="your.email@example.com"
+        <input type="email" id="email" name="email" placeholder="ghungrooandpalette@gmail.com"
                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition-colors" required>
     </div>
     <div>
@@ -760,7 +760,7 @@
 </div>
                 <div class="text-center mt-8 space-y-4">
                     <p class="text-gray-700 text-lg">You can also connect with me directly:</p>
-                    <p class="text-indigo-600 text-xl font-semibold">Email: <a href="mailto:your.email@example.com" class="hover:underline">your.email@example.com</a></p>
+                    <p class="text-indigo-600 text-xl font-semibold">Email: <a href="mailto:ghungrooandpalette@gmail.com" class="hover:underline">ghungrooandpalette@gmail.com</a></p>
                     <p class="text-indigo-600 text-xl font-semibold">Phone: <a href="tel:+1234567890" class="hover:underline">+1 (234) 567-890</a></p>
                     <div class="flex justify-center space-x-6 mt-6">
                         <!-- Social Media Icons (replace with actual links) -->
@@ -1107,26 +1107,6 @@ lightboxImg.addEventListener("touchend", (e) => {
     });
   });
 </script>
-<script>
-    // Clear the success message if user starts a new interaction
-    document.addEventListener("DOMContentLoaded", () => {
-        const form = document.getElementById("contactForm");
-        const successMsg = document.getElementById("successMessage");
-
-        // Hide message on form input interaction
-        form.querySelectorAll("input, textarea").forEach(input => {
-            input.addEventListener("input", () => {
-                if (successMsg) successMsg.style.display = "none";
-            });
-        });
-
-        // Optional: Hide success message when clicking any image/product
-        document.querySelectorAll(".product-image").forEach(image => {
-            image.addEventListener("click", () => {
-                if (successMsg) successMsg.style.display = "none";
-            });
-        });
-    });
-</script>
+    
 </body>
 </html>
